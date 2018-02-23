@@ -12,7 +12,7 @@ public class Main {
 	// write your code here
 
         log.info("Hello world Motherfucka!!!");
-
+/*
         try {
             AppGameContainer apgc = new AppGameContainer(new Slick2DGame("Hack42"));
             apgc.setDisplayMode(1024, 768, false);
@@ -20,6 +20,9 @@ public class Main {
         } catch (SlickException ex){
             log.error("Wtf", ex);
         }
+*/
+
+        NiftyGUI.createGame(new NiftyGUI());
 
     }
 }

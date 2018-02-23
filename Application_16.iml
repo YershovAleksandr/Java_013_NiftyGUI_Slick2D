@@ -12,5 +12,10 @@
     <orderEntry type="library" name="slick" level="project" />
     <orderEntry type="library" name="jinput" level="project" />
     <orderEntry type="library" name="lwjgl" level="project" />
+    <orderEntry type="library" name="nifty-1.4.3" level="project" />
+    <orderEntry type="library" name="lwjgl" level="project" />
+    <orderEntry type="library" name="jinput" level="project" />
+    <orderEntry type="library" name="nifty-1.4.3" level="project" />
+    <orderEntry type="library" name="xpp3-1.1.4c" level="project" />
   </component>
 </module>
