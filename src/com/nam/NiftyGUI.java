@@ -5,9 +5,9 @@ import com.sun.org.apache.xpath.internal.operations.String;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.controls.button.builder.ButtonBuilder;
 import de.lessvoid.nifty.slick2d.NiftyBasicGame;
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.SlickException;
+import de.lessvoid.nifty.slick2d.NiftyRenderOrder;
+import de.lessvoid.nifty.slick2d.NiftyUpdateOrder;
+import org.newdawn.slick.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +18,7 @@ public class NiftyGUI extends NiftyBasicGame{
     public static void createGame(NiftyGUI game){
         try{
             AppGameContainer container = new AppGameContainer(game, 1024, 768, false);
+            container.setShowFPS(true);
             container.start();
         }catch (SlickException ex){
             log.error("WTF", ex);
@@ -27,6 +28,7 @@ public class NiftyGUI extends NiftyBasicGame{
     public NiftyGUI(){
         super( "Fuck GUI", "start");
         log.info("Constructor");
+        setRenderOrder(NiftyRenderOrder.NiftyBackground);
 
         //"res/helloworld.xml"
     }
@@ -36,12 +38,29 @@ public class NiftyGUI extends NiftyBasicGame{
         //if (nifty.getM)
         //nifty.fromXml();
 
+
+
         nifty.fromXml("res/helloworld.xml", "start");
+
+
+
+        log.info("Render order" + getRenderOrder());
         //ButtonBuilder b = new ButtonBuilder("Btn", "Fuck");
 
-        //log.info("ver = " + nifty.getVersion());
+        log.info("ver = " + nifty.getVersion());
 
     }
+
+    @Override
+    public void renderGame(GameContainer gc, Graphics g){
+        //
+        g.setColor(Color.green);
+        //g.setFont(new );
+        g.drawString("Fuck you", 100, 100);
+
+
+    }
+
 
     //
     //screen.debugOutput();
