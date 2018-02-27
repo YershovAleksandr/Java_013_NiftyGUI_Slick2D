@@ -45,7 +45,7 @@ public class NiftyGUI extends NiftyBasicGame{
 
 
         log.info("Render order" + getRenderOrder());
-        //ButtonBuilder b = new ButtonBuilder("Btn", "Fuck");
+
 
         log.info("ver = " + nifty.getVersion());
 
