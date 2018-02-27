@@ -58,6 +58,7 @@ public class NiftyGUI extends NiftyBasicGame{
         //g.setFont(new );
         g.drawString("Fuck you", 100, 100);
 
+
         g.setColor(Color.red);
         g.drawRect(300, 300, 200, 200);
 
