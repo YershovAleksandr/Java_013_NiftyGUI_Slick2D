@@ -29,8 +29,6 @@ public class NiftyGUI extends NiftyBasicGame{
         super( "Fuck GUI", "start");
         log.info("Constructor");
         setRenderOrder(NiftyRenderOrder.NiftyBackground);
-
-        //"res/helloworld.xml"
     }
 
     @Override
