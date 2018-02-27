@@ -51,13 +51,4 @@ public class NiftyGUI extends NiftyBasicGame{
         g.drawRect(300, 300, 200, 200);
 
     }
-
-
-    //
-    //screen.debugOutput();
-
-    /*@Override
-    protected void renderGame(){
-
-    }*/
 }
