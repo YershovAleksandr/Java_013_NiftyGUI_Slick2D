@@ -35,19 +35,11 @@ public class NiftyGUI extends NiftyBasicGame{
 
     @Override
     protected void prepareNifty(Nifty nifty) {
-
-
-
-
         nifty.fromXml("res/helloworld.xml", "start");
-
-
 
         log.info("Render order" + getRenderOrder());
 
-
         log.info("ver = " + nifty.getVersion());
-
     }
 
     @Override
