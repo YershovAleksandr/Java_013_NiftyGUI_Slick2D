@@ -35,7 +35,6 @@ public class NiftyGUI extends NiftyBasicGame{
 
     @Override
     protected void prepareNifty(Nifty nifty) {
-
         //nifty.fromXml();
 
 
