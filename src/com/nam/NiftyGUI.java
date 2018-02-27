@@ -47,6 +47,5 @@ public class NiftyGUI extends NiftyBasicGame{
 
         g.setColor(Color.red);
         g.drawRect(300, 300, 200, 200);
-
     }
 }
