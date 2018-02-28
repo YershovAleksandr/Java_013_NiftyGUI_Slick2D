@@ -21,11 +21,10 @@ public class Slick2DGame extends BasicGame {
         //
     }
 
-        public void render(GameContainer gc, Graphics g) throws SlickException{
-            //
-            g.drawString("Fuck you", 100, 100);
+    public void render(GameContainer gc, Graphics g) throws SlickException{
+        //
+        g.drawString("Fuck you", 100, 100);
 
-
-        }
+    }
 
 }
