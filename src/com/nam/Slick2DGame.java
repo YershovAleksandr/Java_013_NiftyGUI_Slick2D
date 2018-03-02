@@ -26,5 +26,4 @@ public class Slick2DGame extends BasicGame {
         g.drawString("Fuck you", 100, 100);
 
     }
-
 }
