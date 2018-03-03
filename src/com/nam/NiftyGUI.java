@@ -27,6 +27,8 @@ public class NiftyGUI extends NiftyBasicGame{
 
     public NiftyGUI(){
         super( "Fuck GUI", "start42");
+        //super( "Fuck GUI", "country_select_screen");
+        //super( "Fuck GUI");
         log.info("Constructor");
         setRenderOrder(NiftyRenderOrder.NiftyBackground);
     }
@@ -34,6 +36,7 @@ public class NiftyGUI extends NiftyBasicGame{
     @Override
     protected void prepareNifty(Nifty nifty) {
         nifty.fromXml("res/helloworld.xml", "start42");
+        //nifty.fromXml("res/screens/country_select_screen.xml", "country_select_screen");
 
         log.info("Render order" + getRenderOrder());
 
