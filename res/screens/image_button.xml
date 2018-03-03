@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <controlDefinition name="image_button" controller="ru.game.aurora.gui.niffy.ImageButtonController">
+        <panel style="aurora-button#panel" focusable="true" childLayout="overlay">
+            <image id="#image"/>
+            <text id="#text" textHAlign="center" textVAlign="top" style="button-font" text="$label"/>
+        </panel>
+    </controlDefinition>
+</nifty>

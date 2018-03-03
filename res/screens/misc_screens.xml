@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+
+    <screen id="exit_confirmation_screen" controller="ru.game.aurora.gui.ExitConfirmationScreenController">
+        <layer id="layer" childLayout="absolute">
+            <control id="confirmation_window" name="window" closeable="false" hideOnClose="true" width="50%"
+                     height="200px"
+                     x="25%" y="30%">
+                <panel childLayout="vertical" margin="10px">
+                    <panel height="15%"/>
+                    <text style="button-font" text="${gui.confirm_exit}" width="100%" textHAlign="center"/>
+                    <panel height="*"/>
+                    <panel childLayout="horizontal" height="50px">
+                        <panel width="*"/>
+                        <control id="exit_button" name="button" label="${gui.ok}" width="150px" height="45px">
+                            <interact onClick="exitGame()"/>
+                        </control>
+                        <panel width="10px"/>
+                        <control id="cancel_button" name="button" label="${gui.cancel}" width="150px" height="45px">
+                            <interact onClick="closeScreen()"/>
+                        </control>
+                        <panel width="*"/>
+                    </panel>
+                    <panel height="10px"/>
+                </panel>
+            </control>
+        </layer>
+    </screen>
+
+    <screen id="fade_out_screen" controller="ru.game.aurora.gui.FadeOutScreenController">
+        <layer childLayout="center">
+            <panel id="fadePanel" backgroundColor="#000000ff" width="100%" height="100%" childLayout="center">
+                <effect>
+                    <onCustom customKey="fadeIn" name="fade" start="#ff" end="#00" neverStopRendering="true"
+                              length="500"/>
+                    <onCustom customKey="fadeOut" name="fade" start="#00" end="#ff" length="500"
+                              neverStopRendering="true"/>
+                </effect>
+            </panel>
+        </layer>
+    </screen>
+
+</nifty>

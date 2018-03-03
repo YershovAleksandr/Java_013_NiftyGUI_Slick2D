@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <screen id="surface_gui" controller="ru.game.aurora.gui.SurfaceGUIController">
+        <layer childLayout="vertical">
+            <control name="top_panel" id="top_panel"/>
+
+            <panel height="30px"/>
+            <!-- panel with current troop hp -->
+            <panel childLayout="horizontal" height="120px">
+                <panel width="85%"/>
+                <panel childLayout="vertical" width="*" height="100px"
+                       padding="10px,10px,10px,10px"
+                       backgroundImage="gui/style/panel/aurora-panel-hint.png"
+                       imageMode="resize:8,212,16,8,8,212,16,212,8,212,16,16">
+                    <control name="icon_and_count" id="health_count" icon="resources/sprites/gui/health.png" width="128px" height="74px"/>
+                    <panel width="*"/>
+                </panel>
+            </panel>
+
+
+            <!-- midlle panel contains list of buttons to the right -->
+            <panel height="*" childLayout="horizontal">
+                <panel width="85%"/>
+                <panel childLayout="vertical">
+                    <panel height="30%"/>
+                    <panel childLayout="vertical" backgroundImage="resources/sprites/gui/side_panel.png"
+                    padding="20,20,20,20" imageMode="resize:74,100,100,96,74,100,100,68,74,100,100,85">
+                        <control id="inventory_button" name="button" label="${gui.inventory}" width="90%"
+                                 height="50px">
+                            <interact onClick="openInventory()"/>
+                        </control>
+                        <control id="map_button" name="button" label="${gui.map}" width="90%"
+                                 height="50px">
+                            <interact onClick="openMap()"/>
+                        </control>
+                        <control id="menu_button" name="button" label="${gui.space.menu}" width="90%" height="50px">
+                            <interact onClick="openMenu()"/>
+                        </control>
+                    </panel>
+                    <panel height="*"/>
+                </panel>
+            </panel>
+
+            <panel height="*"/>
+            <panel height="100px" childLayout="center">
+                <control id="shoot_panel" name="shoot_panel" height="100px"/>
+            </panel>
+
+            <panel id="interactPanel" height="101px" childLayout="horizontal" visible="false">
+                <panel width="40%"/>
+                <panel style="nifty-panel" x="40%" width="200px" childLayout="center" height="100%">
+                    <control id="left_button" name="button" label="${gui.surface.interact}" width="90%"
+                             height="90%">
+                        <interact onRelease="interactClicked()"/>
+                    </control>
+                    <panel width="*"/>
+                </panel>
+            </panel>
+            <!-- bottom panel containing weapon buttons and log text -->
+            <panel height="113px" childLayout="horizontal" backgroundImage="sprites/gui/bottom_panel_starsystem.png"
+                   imageMode="resize:324,802,153,40,324,802,153,4,324,802,153,69" padding="12px,20px,5px,15px">
+                <panel width="64px" height="100%" childLayout="vertical">
+                    <panel height="10px"/>
+                    <control id="weapon_button" name="button" label="${gui.surface.fire}" width="100%" height="64px">
+                        <interact onClick="weaponClicked()"/>
+                    </control>
+                </panel>
+                <panel width="267px"/>
+
+                <panel width="*" childLayout="vertical">
+                    <panel height="8px"/>
+                    <control id="log_list" name="listBox" vertical="on" horizontal="off" height="95%"
+                             selectionMode="Disabled" />
+                </panel>
+                <panel width="30px"/>
+                <panel width="115px" childLayout="vertical">
+                    <panel height="20px"/>
+                    <control id="next_turn_button" name="button" label="${gui.end_turn}" height="50px" width="100%">
+                        <interact onRelease="nextTurn()"/>
+                    </control>
+                </panel>
+            </panel>
+        </layer>
+        <layer id="help_layer" childLayout="absolute">
+            <panel width="100%" height="100%" childLayout="absolute">
+                <control id="help_window" hideOnClose="true" name="window"  closeable="true" title="${gui.help.title}"   width="45%" height="35%" x="10%" y="10%" visible="false">
+                    <control id="help_popup" name="help_popup"/>
+                </control>
+            </panel>
+        </layer>
+    </screen>
+</nifty>

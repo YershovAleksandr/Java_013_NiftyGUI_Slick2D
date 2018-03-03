@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <controlDefinition name="icon_and_count">
+        <panel childLayout="horizontal" padding="5px">
+            <image filename="$icon"/>
+            <panel width="10px"/>
+            <text style="white-font" id="#count" text="100" height="100%" textHAlign="center" textVAlign="center"/>
+        </panel>
+    </controlDefinition>
+
+    <controlDefinition name="icon_and_count_with_shadow">
+        <panel childLayout="horizontal" padding="5px">
+            <image filename="$icon"/>
+            <panel width="10px"/>
+            <panel style="nifty-panel-no-shadow" childLayout="center" width="*" height="100%">
+                <text style="white-font" id="#count" text="100" height="100%" textHAlign="center" textVAlign="center"/>
+            </panel>
+        </panel>
+    </controlDefinition>
+
+    <controlDefinition name="top_panel"  controller="ru.game.aurora.gui.niffy.TopPanelController">
+        <panel id="topPanel" height="74px" childLayout="horizontal">
+            <panel width="559px" height="54px" backgroundImage="resources/sprites/gui/hull_bar.png"
+                   childLayout="vertical">
+                <panel height="5px"/>
+                <panel height="40px" childLayout="horizontal">
+                    <panel width="40px"/>
+                    <control id="progressbar" name="progressbar" width="450px" height="40px"/>
+                </panel>
+                <panel height="9px"/>
+            </panel>
+            <panel width="*"/>
+            <panel width="464px" height="74px" backgroundImage="resources/sprites/gui/crew_bar.png"
+                   padding="5,5,5,75"
+                   childLayout="horizontal">
+            <panel width="25px"/>
+                <control name="icon_and_count" id="sci_count" icon="resources/sprites/gui/sci_count.png" width="100px" height="50px">
+                    <effect>
+                        <onHover name="custom-hint" targetElement="hint-panel" hintText="${hints.space.scientists}"/>
+                    </effect>
+                </control>
+                <panel width="10px"/>
+                <control name="icon_and_count" id="engi_count" icon="resources/sprites/gui/engi_count.png" width="100px" height="50px">
+                    <effect>
+                        <onHover name="custom-hint" targetElement="hint-panel" hintText="${hints.space.engineers}"/>
+                    </effect>
+                </control>
+                <panel width="10px"/>
+                <control name="icon_and_count" id="mil_count" icon="resources/sprites/gui/mil_count.png" width="100px" height="50px">
+                    <effect>
+                        <onHover name="custom-hint" targetElement="hint-panel" hintText="${hints.space.military}"/>
+                    </effect>
+                </control>
+            </panel>
+        </panel>
+    </controlDefinition>
+</nifty>

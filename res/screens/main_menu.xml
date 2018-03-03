@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+
+    <screen id="main_menu" controller="ru.game.aurora.application.MainMenuController">
+        <layer id="layer" childLayout="horizontal">
+            <panel width="20px"/>
+            <panel width="*" childLayout="vertical">
+                <panel height="*"/>
+                <text style="base-font" text="${gui.main_menu.blog_link}" textHAlign="right">
+                    <interact onClick="openBlog()"/>
+                    <effect>
+                        <onHover name="changeMouseCursor" id="hand"/>
+                    </effect>
+                </text>
+                <panel height="10px"/>
+                <text style="base-font" text="${gui.main_menu.bug_link}" textHAlign="right">
+                    <interact onClick="openTracker()"/>
+                    <effect>
+                        <onHover name="changeMouseCursor" id="hand"/>
+                    </effect>
+                </text>
+                <panel height="20px"/>
+            </panel>
+            <panel id="panel" width="512px" childLayout="vertical">
+                <panel height="5%"/>
+                <panel backgroundImage="resources/sprites/gui/logo.png" width="512px" height="256px"/>
+                <panel height="10px"/>
+
+                <panel childLayout="horizontal">
+                    <panel width="*"/>
+                    <panel width="300px" childLayout="vertical">
+                        <text id="version_text" style="base-font" width="100%" textHAlign="right"/>
+                        <panel height="5%"/>
+                        <control id="continue_game_button" name="button" label="${gui.main_menu.continue_game}"
+                                 width="100%" height="20%">
+                            <interact onRelease="loadGame()"/>
+                        </control>
+                        <panel height="5%"/>
+                        <control id="new_game_button" name="button" label="${gui.main_menu.new_game}" width="100%"
+                                 height="20%">
+                            <interact onRelease="newGame()"/>
+                        </control>
+                        <panel height="5%"/>
+                        <control id="settings_button" name="button" label="${gui.main_menu.settings}" width="100%"
+                                 height="20%">
+                            <interact onRelease="openSettings()"/>
+                        </control>
+
+                        <panel height="5%"/>
+                        <control id="exit_game_button" name="button" label="${gui.main_menu.exit_game}" width="100%"
+                                 height="20%">
+                            <interact onRelease="exitGame()"/>
+                        </control>
+
+                    </panel>
+                    <panel width="30px"/>
+                </panel>
+
+                <panel height="*"/>
+            </panel>
+            <panel width="50px"/>
+
+        </layer>
+    </screen>
+
+    <screen id="empty_screen">
+        <layer/>
+    </screen>
+
+</nifty>

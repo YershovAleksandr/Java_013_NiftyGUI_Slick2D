@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+
+
+    <controlDefinition name="messages_screen">
+        <panel childLayout="horizontal" width="100%" height="100%">
+            <control id="itemsList" name="listBox" vertical="optional" horizontal="off" height="100%" selection="Single" width="30%"
+                     viewConverterClass="ru.game.aurora.gui.ListBoxSimpleTextWithWrapViewConverter">
+                <control name="dialog-line" controller="de.lessvoid.nifty.controls.listbox.ListBoxItemController">
+                    <effect>
+                        <onCustom customKey="select" name="colorBar" post="false" color="#444f" neverStopRendering="true" timeType="infinite" />
+                        <onCustom customKey="select" name="colorBar" post="false" color="#444f" neverStopRendering="true" timeType="infinite" />
+                        <onCustom customKey="select" name="textColor" post="false" color="#fc0f" neverStopRendering="true" timeType="infinite" />
+                        <onHover name="colorBar" color="#444736" post="false" neverStopRendering="true" timeType="infinite"
+                                 inset="1px"/>
+                    </effect>
+                    <interact onClick="listBoxItemClicked()"/>
+                </control>
+            </control>
+
+            <panel width="10px"/>
+            <panel childLayout="vertical">
+                <panel childLayout="horizontal" style="nifty-panel-no-shadow" height="74" width="100%" padding="5px">
+                    <panel id="selectedItemImg" height="64" width="64"/>
+                    <panel width="20px"/>
+                    <text id="messageDetailsText" style="base-font" width="*" height="100%" textHAlign="left" textVAlign="center"/>
+                </panel>
+                <panel height="10px" />
+
+                <control id="scrollbarPanelId" name="scrollPanel" horizontal="false" childLayout="center">
+                    <panel childLayout="center" padding="15px" width="100%">
+                        <text id="selectedItemText" style="base-font" wrap="true" text="${gui.no_item_selected}"
+                              width="95%"
+                              textHAlign="left"/>
+                    </panel>
+                </control>
+
+            </panel>
+        </panel>
+    </controlDefinition>
+
+
+    <screen id="earth_progress_screen" controller="ru.game.aurora.gui.EarthProgressScreenController">
+        <layer childLayout="absolute">
+            <control id="earth_progress_window" name="window" hideOnClose="true" width="60%" height="50%" x="20%"
+                     y="25%"
+                     childLayout="vertical">
+                <panel childLayout="vertical" height="100%" width="100%">
+                    <control id="itemsList" name="listBox" vertical="optional" horizontal="off" height="*"
+                             selection="Disabled"/>
+                    <panel height="20px"/>
+                    <panel childLayout="horizontal" height="50px">
+                        <panel width="75%"/>
+                        <text id="totalText" style="button-font" text="Total:"/>
+                    </panel>
+                    <panel childLayout="horizontal" height="50px">
+                        <panel width="70%"/>
+                        <control id="close_button" name="button" label="Close" width="150px" height="45px">
+                            <interact onClick="closeScreen()"/>
+                        </control>
+                    </panel>
+                </panel>
+            </control>
+        </layer>
+    </screen>
+
+
+    <controlDefinition name="ship_line">
+        <panel childLayout="horizontal" width="100%" align="right">
+            <control id="#inventory_to_storage" name="button" width="32px" label="&lt;">
+                <interact onClick="onShipToShipyardClicked()"/>
+            </control>
+            <control id="#item" name="label" align="left" textHAlign="left" width="*"/>
+        </panel>
+    </controlDefinition>
+
+    <controlDefinition name="shipyard_line">
+        <panel childLayout="horizontal" width="100%" align="right">
+            <control id="#item" name="label" align="left" textHAlign="left" width="*"/>
+            <control id="#storage_to_inventory" name="button" width="32px" label="&gt;">
+                <interact onClick="onShipyardToShipClicked()"/>
+            </control>
+        </panel>
+    </controlDefinition>
+
+    <screen id="earth_screen" controller="ru.game.aurora.gui.EarthScreenController">
+
+        <layer childLayout="absolute">
+            <control id="earth_window" name="window" title="Earth Relay" closeable="false" width="60%" height="85%"
+                     x="20%" y="8%"
+                     padding="8px,8px,8px,8px">
+                <panel childLayout="vertical" height="100%">
+                    <control id="earth_tabs" name="tabGroup" buttonWidth="30%" buttonHeight="30px" height="*">
+                        <control id="messages" name="tab" caption="Messages" childLayout="center">
+                            <control name="messages_screen" id="messages_list"/>
+                        </control>
+                        <control id="upgrades" name="tab" caption="Humanity" childLayout="center">
+                            <control name="humanity_screen" id="humanity_tab"/>
+                        </control>
+                        <control id="shipyard" name="tab" caption="Shipyard" childLayout="vertical">
+                            <panel height="10px"/>
+                            <panel childLayout="horizontal" width="100%" height="276px">
+
+                                <panel childLayout="vertical" width="100px" style="nifty-panel-no-shadow">
+                                    <text text="${gui.crew}" style="base-font"/>
+                                    <panel height="10px"/>
+                                    <control name="icon_and_count" id="sci_count"
+                                             icon="resources/sprites/gui/sci_count.png" width="100px" height="50px">
+                                        <effect>
+                                            <onHover name="custom-hint" targetElement="hint-panel"
+                                                     hintText="${hints.space.scientists}"/>
+                                        </effect>
+                                    </control>
+                                    <panel width="10px"/>
+                                    <control name="icon_and_count" id="engi_count"
+                                             icon="resources/sprites/gui/engi_count.png" width="100px" height="50px">
+                                        <effect>
+                                            <onHover name="custom-hint" targetElement="hint-panel"
+                                                     hintText="${hints.space.engineers}"/>
+                                        </effect>
+                                    </control>
+                                    <panel width="10px"/>
+                                    <control name="icon_and_count" id="mil_count"
+                                             icon="resources/sprites/gui/mil_count.png" width="100px" height="50px">
+                                        <effect>
+                                            <onHover name="custom-hint" targetElement="hint-panel"
+                                                     hintText="${hints.space.military}"/>
+                                        </effect>
+                                    </control>
+                                </panel>
+                                <panel width="10px"/>
+
+                                <panel childLayout="horizontal" style="nifty-panel-no-shadow">
+                                    <image id="upgrade_icon" width="256px" height="256px"/>
+                                    <panel width="10px"/>
+                                    <panel width="*" childLayout="vertical" padding="10px">
+                                        <text id="upgrade_name" style="bold-font" textHAlign="left"/>
+                                        <panel height="10px"/>
+                                        <text width="90%" wrap="true" style="base-font" textHAlign="left"
+                                              id="upgrade_text"/>
+                                    </panel>
+                                    <panel width="5px"/>
+                                </panel>
+                                <panel width="5px"/>
+
+                            </panel>
+                            <panel height="10px"/>
+                            <control id="free_space" name="progressbar" width="90%" height="40px"/>
+                            <!-- inventory and upgrades -->
+                            <panel height="10px"/>
+
+                            <panel childLayout="horizontal" height="40%">
+                                <panel childLayout="vertical" width="45%" height="100%">
+                                    <text id="inventoryText" style="button-font" align="center" text="${gui.shipyard}"
+                                          height="32px"/>
+                                    <control id="storageList" name="listBox" vertical="optional" horizontal="off"
+                                             selection="Single"
+                                             viewConverterClass="ru.game.aurora.player.engineering.ShipUpgradeViewConverter"
+                                             visibleToMouse="true"
+                                             height="90%"
+                                            >
+                                        <control name="shipyard_line"
+                                                 controller="de.lessvoid.nifty.controls.listbox.ListBoxItemController">
+                                            <effect>
+                                                <onCustom customKey="focus" name="colorBar" post="false" color="#444f"
+                                                          neverStopRendering="true" timeType="infinite"/>
+                                                <onCustom customKey="select" name="colorBar" post="false" color="#444f"
+                                                          neverStopRendering="true" timeType="infinite"/>
+                                                <onCustom customKey="select" name="textColor" post="false" color="#fc0f"
+                                                          neverStopRendering="true" timeType="infinite"/>
+                                            </effect>
+                                            <interact onClick="listBoxItemClicked()"/>
+                                        </control>
+                                    </control>
+                                </panel>
+
+                                <panel height="10px"/>
+
+                                <panel childLayout="vertical" width="45%" height="100%">
+                                    <text id="storageText" style="button-font" align="center" text="${gui.ship}"
+                                          height="32px"/>
+                                    <control id="inventoryList" name="listBox" vertical="on" horizontal="off"
+                                             selection="Single"
+                                             height="90%"
+                                             visibleToMouse="true"
+                                             viewConverterClass="ru.game.aurora.player.engineering.ShipUpgradeViewConverter">
+                                        <control name="ship_line"
+                                                 controller="de.lessvoid.nifty.controls.listbox.ListBoxItemController">
+                                            <effect>
+                                                <onCustom customKey="focus" name="colorBar" post="false" color="#444f"
+                                                          neverStopRendering="true" timeType="infinite"/>
+                                                <onCustom customKey="select" name="colorBar" post="false" color="#444f"
+                                                          neverStopRendering="true" timeType="infinite"/>
+                                                <onCustom customKey="select" name="textColor" post="false" color="#fc0f"
+                                                          neverStopRendering="true" timeType="infinite"/>
+                                            </effect>
+                                            <interact onClick="listBoxItemClicked()"/>
+                                        </control>
+                                    </control>
+                                </panel>
+
+                            </panel>
+
+
+                        </control>
+                    </control>
+                    <panel height="10px"/>
+                    <panel childLayout="horizontal" height="55px">
+                        <panel width="75%"/>
+                        <control id="close_button" name="button" label="Close" width="150px" height="45px">
+                            <interact onClick="closeScreen()"/>
+                        </control>
+                    </panel>
+                </panel>
+            </control>
+        </layer>
+    </screen>
+</nifty>

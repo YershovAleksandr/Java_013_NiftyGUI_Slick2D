@@ -1,0 +1,50 @@
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+
+    <controlDefinition name="journal_control">
+        <panel childLayout="horizontal" width="100%" height="100%">
+            <control id="#itemsList" name="listBox" vertical="optional" horizontal="optional" height="100%" selection="Single" width="30%"/>
+            <panel width="10px"/>
+
+            <control name="scrollPanel" horizontal="false" height="100%">
+                <text id="#message_text" style="base-font" width="90%" wrap="true" textHAlign="left" textVAlign="top"/>
+            </control>
+
+        </panel>
+    </controlDefinition>
+
+
+    <screen id="journal_screen" controller="ru.game.aurora.gui.JournalScreenController">
+        <layer childLayout="absolute">
+            <control id="journal_window" name="window" hideOnClose="true" title="${gui.journal.title}" width="90%" height="80%" x="5%" y="10%">
+                <panel childLayout="vertical">
+
+                    <!-- tabs -->
+                    <control id="journal_tabs" name="tabGroup" buttonWidth="300px" buttonHeight="30px" height="*">
+                        <control id="active_quests" name="tab" caption="${gui.journal.active_quest.title}"
+                                 childLayout="center">
+                            <control name="journal_control" id="active_quest_tab"/>
+                        </control>
+                        <control id="completed_quests" name="tab" caption="${gui.journal.completed_quest.title}"
+                                 childLayout="center">
+                            <control name="journal_control" id="completed_quest_tab"/>
+                        </control>
+
+                        <control id="codex" name="tab" caption="${gui.journal.codex.title}">
+                        <control name="journal_control" id="codex_tab" />
+                        </control>
+                    </control>
+
+                    <!-- close button panel -->
+                    <panel height="10px"/>
+                    <panel childLayout="horizontal" height="50px">
+                        <panel width="80%"/>
+                        <control id="close_button" name="button" label="${gui.close}" width="150px" height="45px">
+                            <interact onClick="closeScreen()"/>
+                        </control>
+                    </panel>
+                </panel>
+            </control>
+        </layer>
+    </screen>
+
+</nifty>

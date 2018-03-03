@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <registerEffect name="custom-hint" class="ru.game.aurora.gui.niffy.CustomHint"/>
+    <registerEffect name="galaxymap-hint" class="ru.game.aurora.gui.StarmapHintController"/>
+
+    <controlDefinition name="button_and_count">
+        <panel childLayout="horizontal">
+            <panel childLayout="vertical" padding="5px">
+                <image filename="$icon"/>
+                <text style="base-font" id="count_text" text="100"/>
+            </panel>
+            <panel backgroundImage="$background" width="230px" height="53px" childLayout="center">
+                <text style="base-font" text="$title"/>
+            </panel>
+        </panel>
+    </controlDefinition>
+
+    <screen id="galaxy_map_gui" controller="ru.game.aurora.gui.GalaxyMapController">
+        <layer id="starmap_layer" childLayout="vertical">
+            <effect>
+                <onHover name="galaxymap-hint" targetElement="starmap-hint-panel"/>
+            </effect>
+            <control name="top_panel" id="top_panel"/>
+
+            <panel height="50px"/>
+
+            <panel childLayout="horizontal" height="120px">
+                <panel width="*"/>
+                <panel childLayout="vertical" width="160px" height="100px"
+                       padding="18px,16px,26px,8px"
+                       backgroundImage="gui/style/panel/aurora-panel-hint.png"
+                       imageMode="resize:8,212,16,8,8,212,16,212,8,212,16,16">
+                    <text id="resources_text" text="${gui.resources}" style="button-font" width="*"/>
+                    <panel height="*"/>
+                    <text id="credits_text" text="${gui.credits}" style="button-font" width="*"/>
+                </panel>
+            </panel>
+            <panel height="50px"/>
+
+            <!-- middle panel contains list of buttons to the right -->
+            <panel height="*" childLayout="horizontal">
+                <panel width="*"/>
+                <panel width="216px" childLayout="vertical">
+                    <panel height="*"/>
+                    <panel height="390px" childLayout="vertical" backgroundImage="resources/sprites/gui/side_panel.png"
+                           padding="20,20,20,20" imageMode="resize:74,100,100,96,74,100,100,68,74,100,100,85">
+                        <control id="research_button" name="button" label="${gui.space.research}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openResearchScreen()"/>
+                        </control>
+                        <control id="engineering_button" name="button" label="${gui.space.engineering}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openEngineeringScreen()"/>
+                        </control>
+                        <control id="ship_button" name="button" label="${gui.ship.title}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openShipScreen()"/>
+                        </control>
+                        <control id="crew_button" name="button" label="${gui.crew.title}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openCrewScreen()"/>
+                        </control>
+                        <control id="journal_button" name="button" label="${gui.journal.title}"
+                                 width="90%"
+                                 height="50px">
+                            <interact onRelease="openJournal()"/>
+                        </control>
+                        <control id="starmap_button" name="button" label="${gui.space.galaxy_map}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openStarMap()"/>
+                        </control>
+                        <control id="menu_button" name="button" label="${gui.space.menu}" width="90%" height="50px">
+                            <interact onRelease="openMenu()"/>
+                        </control>
+                    </panel>
+                    <panel height="*"/>
+                </panel>
+            </panel>
+
+
+            <panel height="70px" childLayout="center">
+                <control id="shoot_panel" name="shoot_panel" width="*"/>
+            </panel>
+            <!-- panel containing additional buttons like 'interact' 'land' 'scan' that appear only when needed -->
+            <panel id="interactPanel" height="70px" childLayout="horizontal" visible="false">
+                <panel width="*"/>
+                <panel style="nifty-panel" width="200px" childLayout="center" height="100%">
+                    <control id="left_button" name="button" label="${gui.space.enter_system_button}" width="90%"
+                             height="100%">
+                        <interact onClick="enterStarsystem()"/>
+                    </control>
+                </panel>
+                <panel width="*"/>
+            </panel>
+
+            <!-- bottom panel containing log text -->
+            <panel height="113px" imageMode="resize:324,802,153,40,324,802,153,4,324,802,153,69"
+                   childLayout="horizontal"
+                   backgroundImage="sprites/gui/bottom_panel_galaxy.png" padding="20px,0px,20px">
+                <panel width="324px" childLayout="center">
+                    <text id="ship_coordinates" style="button-font" text="${gui.space.ship_coords}" width="100%"
+                          height="100%" textHAlign="center" textVAlign="center"/>
+                </panel>
+                <panel width="10px"/>
+                <control id="log_list" name="listBox" vertical="on" horizontal="off" height="*"
+                         selectionMode="Disabled" width="*"/>
+                <panel width="40px"/>
+                <panel childLayout="vertical" width="120px">
+                    <text id="stardate_text" style="button-font" width="83px" height="100%" textHAlign="center"
+                          textVAlign="center"/>
+                </panel>
+            </panel>
+        </layer>
+        <layer id="help_layer" childLayout="absolute">
+            <panel width="100%" height="100%" childLayout="absolute">
+                <control id="help_window" name="window" hideOnClose="true" closeable="true" title="${gui.help.title}"   width="45%" height="35%" x="10%" y="10%" visible="false">
+                    <control id="help_popup" name="help_popup"/>
+                </control>
+            </panel>
+        </layer>
+        <!--star map hint layer -->
+        <layer childLayout="absolute">
+
+            <panel id="starmap-hint-panel" childLayout="horizontal" visible="false" padding="5px,25px,5px,25px" backgroundColor="#aa7f4dff">
+                <panel childLayout="center" height="150px" width="96px" backgroundColor="#aa7f4dff">
+                    <image id="star_image" width="96px" height="96px"/>
+                </panel>
+                <panel width="200px" childLayout="center" backgroundColor="#aa7f4dff">
+                    <text id="star_text" style="button-font" width="90%" height="90%" wrap="true" text="empty"
+                          align="center"
+                          textVAlign="center"/>
+                </panel>
+            </panel>
+        </layer>
+    </screen>
+    <screen id="star_system_gui" controller="ru.game.aurora.gui.GalaxyMapController">
+
+        <layer id="starsystem_layer" childLayout="vertical">
+            <control name="top_panel" id="top_panel"/>
+
+            <panel height="50px"/>
+
+            <panel id="resources_panel" childLayout="horizontal" height="120px">
+                <panel width="*"/>
+                <panel childLayout="vertical" width="160px" height="100px"
+                       padding="18px,16px,26px,8px"
+                       backgroundImage="gui/style/panel/aurora-panel-hint.png"
+                       imageMode="resize:8,212,16,8,8,212,16,212,8,212,16,16">
+                    <text id="resources_text" text="${gui.resources}" style="button-font" width="*"/>
+                    <panel height="*"/>
+                    <text id="credits_text" text="${gui.credits}" style="button-font" width="*"/>
+                </panel>
+            </panel>
+            <panel height="50px"/>
+
+            <!-- midlle panel contains list of buttons to the right -->
+            <panel id="right_menu" height="*" childLayout="horizontal">
+                <panel width="*"/>
+                <panel width="216px" childLayout="vertical">
+                    <panel height="*"/>
+                    <panel height="390px" childLayout="vertical" backgroundImage="resources/sprites/gui/side_panel.png"
+                           padding="20,20,20,20" imageMode="resize:74,100,100,96,74,100,100,68,74,100,100,85">
+                        <control id="research_button" name="button" label="${gui.space.research}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openResearchScreen()"/>
+                            <effect>
+                                <onHover name="custom-hint" targetElement="hint-panel"
+                                         hintText="${hints.space.research}"/>
+                            </effect>
+                        </control>
+                        <control id="engineering_button" name="button" label="${gui.space.engineering}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openEngineeringScreen()"/>
+                            <effect>
+                                <onHover name="custom-hint" targetElement="hint-panel"
+                                         hintText="${hints.space.engineering}"/>
+                            </effect>
+                        </control>
+                        <control id="ship_button" name="button" label="${gui.ship.title}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openShipScreen()"/>
+                        </control>
+                        <control id="crew_button" name="button" label="${gui.crew.title}" width="90%"
+                                 height="50px">
+                            <interact onRelease="openCrewScreen()"/>
+                        </control>
+                        <control id="journal_button" name="button" label="${gui.journal.title}"
+                                 width="90%"
+                                 height="50px">
+                            <interact onRelease="openJournal()"/>
+                            <effect>
+                                <onHover name="custom-hint" targetElement="hint-panel"
+                                         hintText="${hints.space.journal}"/>
+                            </effect>
+                        </control>
+                        <control id="landing_party_equip_button" name="button" label="${gui.space.landing_party}"
+                                 width="90%"
+                                 height="50px">
+                            <interact onRelease="openLandingPartyScreen()"/>
+                            <effect>
+                                <onHover name="custom-hint" targetElement="hint-panel"
+                                         hintText="${hints.space.landing_party}"/>
+                            </effect>
+                        </control>
+                        <control id="menu_button" name="button" label="${gui.space.menu}" width="90%" height="50px">
+                            <interact onRelease="openMenu()"/>
+                        </control>
+                    </panel>
+                    <panel height="*"/>
+                </panel>
+            </panel>
+
+            <panel height="70px" childLayout="center">
+                <control id="shoot_panel" name="shoot_panel"/>
+            </panel>
+
+            <!-- panel containing additional buttons like 'interact' 'land' 'scan' that appear only when needed -->
+            <panel id="interactPanel" height="70px" childLayout="horizontal" visible="false">
+                <panel width="*"/>
+                <panel style="nifty-panel" width="334px" childLayout="horizontal" height="100%">
+                    <control id="left_button" name="button" label="${gui.space.land}" width="150px" height="100%">
+                        <interact onRelease="leftButtonPressed()"/>
+                    </control>
+                    <panel width="10px"/>
+                    <control id="right_button" name="button" label="${gui.space.scan}" width="150px" height="100%">
+                        <interact onRelease="rightButtonPressed()"/>
+                    </control>
+                </panel>
+                <panel width="*"/>
+            </panel>
+
+            <!-- bottom panel containing weapon buttons and log text -->
+            <panel id="bottom_menu" height="113px" imageMode="resize:324,802,153,40,324,802,153,4,324,802,153,69"
+                   childLayout="horizontal" backgroundImage="sprites/gui/bottom_panel_starsystem.png"
+                   padding="20px,20px,20px,20px"
+                    >
+                <control id="weapon_0_button" name="image_button" label="" width="64px" height="64px">
+                    <interact onClick="weaponClicked(0)"/>
+                    <effect>
+                        <onHover name="custom-hint" targetElement="hint-panel" hintText="Weapon #1"/>
+                    </effect>
+                </control>
+                <panel width="4px"/>
+                <control id="weapon_1_button" enabled="false" name="image_button" label="" width="64px"
+                         height="64px">
+                    <interact onClick="weaponClicked(1)"/>
+                    <effect>
+                        <onHover name="custom-hint" targetElement="hint-panel" hintText="Weapon #2"/>
+                    </effect>
+                </control>
+                <panel width="4px"/>
+                <control id="weapon_2_button" enabled="false" name="image_button" label="" width="64px"
+                         height="64px">
+                    <interact onClick="weaponClicked(2)"/>
+                    <effect>
+                        <onHover name="custom-hint" targetElement="hint-panel" hintText="Weapon #3"/>
+                    </effect>
+                </control>
+                <panel width="4px"/>
+                <control id="weapon_3_button" enabled="false" name="image_button" label="" width="64px"
+                         height="64px">
+                    <interact onClick="weaponClicked(3)"/>
+                    <effect>
+                        <onHover name="custom-hint" targetElement="hint-panel" hintText="Weapon #4"/>
+                    </effect>
+                </control>
+
+                <panel width="50px"/>
+                <control id="log_list" name="listBox" vertical="on" horizontal="off" height="*"
+                         selectionMode="Disabled" width="*"/>
+                <panel width="50px"/>
+                <panel childLayout="vertical" height="100%" width="100px">
+                    <text id="stardate_text" style="button-font" textHAlign="center" width="100%"/>
+                    <panel height="10px"/>
+                    <control id="next_turn_button" name="button" label="${gui.end_turn}" height="50px">
+                        <interact onRelease="nextTurn()"/>
+                    </control>
+                </panel>
+            </panel>
+        </layer>
+        <layer id="help_layer" childLayout="absolute">
+            <panel width="100%" height="100%" childLayout="absolute">
+                <control id="help_window" name="window" hideOnClose="true" closeable="true" title="${gui.help.title}"   width="45%" height="35%" x="10%" y="10%" visible="false">
+                    <control id="help_popup" name="help_popup"/>
+                </control>
+            </panel>
+        </layer>
+        <!--GUI hint layer -->
+        <layer childLayout="absolute">
+            <panel id="hint-panel" width="200" visible="false" childLayout="vertical" padding="5px,25px,5px,25px"
+                   backgroundColor="#aa7f4dff">
+                <text id="content" style="button-font" width="90%" wrap="true" text="empty" align="center"
+                      valign="center"/>
+            </panel>
+        </layer>
+    </screen>
+
+
+    <popup id="landing_party_lost" childLayout="absolute">
+        <control id="landing_party_lost_window" name="window" hideOnClose="true" width="60%" height="350px" x="20%"
+                 y="30%">
+            <panel childLayout="vertical">
+                <panel height="10px"/>
+                <panel height="256px" childLayout="horizontal">
+                    <image width="256px" filename="sprites/gui/crew_death.png"/>
+                    <text width="*" height="256px" text="${gui.landing_party_lost}" style="button-font"/>
+                </panel>
+                <panel height="10px"/>
+                <panel childLayout="horizontal" height="45px">
+                    <panel width="85%"/>
+                    <control id="close_button" name="button" label="${gui.ok}" height="45px">
+                        <interact onClick="closeCurrentPopup()"/>
+                    </control>
+                </panel>
+            </panel>
+        </control>
+    </popup>
+
+    <popup id="landing" childLayout="absolute">
+        <control id="landing_window" name="window" hideOnClose="true" closeable="false" width="60%" height="350px"
+                 x="20%" y="30%">
+            <panel childLayout="vertical" margin="10px">
+                <panel height="256px" childLayout="horizontal">
+                    <image id="shuttle_image" width="256px" height="256px"/>
+                    <text width="*" height="256px" text="${gui.landing}" style="button-font"/>
+                </panel>
+            </panel>
+        </control>
+    </popup>
+
+    <popup id="target_selection_popup" childLayout="absolute">
+        <control name="interaction_target_selector" id="interaction_target_selector" width="400px" height="40%"/>
+    </popup>
+
+
+    <popup id="attack_friendly_popup" childLayout="absolute">
+        <control id="attack_friendly_confirm_window" name="window" title="${gui.attack_friendly.title}" hideOnClose="true" width="40%" x="30%"
+                 y="30%" height="20%" controller="ru.game.aurora.gui.niffy.FriendlyAttackConfirmationController">
+            <panel childLayout="vertical" padding="5px">
+                <text style="button-font" width="100%" text="${gui.attack_friendly.text}" height="*" textHAlign="center" textVAlign="center"/>
+                <panel childLayout="horizontal" height="30%">
+                    <panel width="*"/>
+                    <control name="button" label="${gui.ok}" height="100%">
+                        <interact onClick="doAttack()"/>
+                    </control>
+                    <panel width="10px"/>
+                    <control name="button" label="${gui.cancel}" height="100%">
+                        <interact onClick="close()"/>
+                    </control>
+                </panel>
+            </panel>
+        </control>
+    </popup>
+
+    <popup id="object_scan" childLayout="absolute">
+        <control id="object_scan_window" name="window" title="${gui.scan.title}" hideOnClose="true" width="60%" x="20%"
+                 y="30%">
+            <panel childLayout="vertical">
+                <panel childLayout="horizontal" padding="10px" height="276px">
+                    <image filename="resources/sprites/portraits/scientist.png" width="256px" height="256px"/>
+                    <panel width="10px"/>
+                    <panel style="nifty-listbox#scrollpanel" padding="10px" width="*" height="256px"
+                           childLayout="horizontal">
+                        <text width="95%" height="256px" id="scan_text" style="base-font" textHAlign="left"
+                              padding="5px" wrap="true"/>
+                    </panel>
+                </panel>
+                <panel height="10px"/>
+                <panel childLayout="horizontal" height="45px">
+                    <panel width="85%"/>
+                    <control id="close_button" name="button" label="${gui.ok}" height="45px">
+                        <interact onClick="closeCurrentPopup()"/>
+                    </control>
+                </panel>
+            </panel>
+        </control>
+    </popup>
+</nifty>
