@@ -1,12 +1,9 @@
 package com.nam;
 
 import com.sun.istack.internal.NotNull;
-import com.sun.org.apache.xpath.internal.operations.String;
 import de.lessvoid.nifty.Nifty;
-import de.lessvoid.nifty.controls.button.builder.ButtonBuilder;
 import de.lessvoid.nifty.slick2d.NiftyBasicGame;
 import de.lessvoid.nifty.slick2d.NiftyRenderOrder;
-import de.lessvoid.nifty.slick2d.NiftyUpdateOrder;
 import org.newdawn.slick.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,12 +32,23 @@ public class NiftyGUI extends NiftyBasicGame{
 
     @Override
     protected void prepareNifty(Nifty nifty) {
-        nifty.fromXml("res/helloworld.xml", "start42");
+        //nifty.fromXml("res/helloworld.xml", "start42");
+        nifty.fromXmlWithoutStartScreen("res/helloworld.xml");
         //nifty.fromXml("res/screens/country_select_screen.xml", "country_select_screen");
+
+        nifty.addXml("res/helloworld.xml");
+
+        nifty.gotoScreen("start42");
+
+        nifty.gotoScreen("fuckscreen");
 
         log.info("Render order" + getRenderOrder());
 
         log.info("ver = " + nifty.getVersion());
+    }
+
+    public String Fuck42(){
+        return "PIDOR";
     }
 
     @Override
