@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nifty xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
+
     <screen id="start42" controller="com.nam.niftygui">
         <layer id="layer" backgroundColor="#003f" childLayout="center">
             <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f"
