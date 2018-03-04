@@ -8,4 +8,23 @@
             </panel>
         </layer>
     </screen>
+
+    <screen id="fuckscreen" controller="com.nam.niftygui">
+        <layer id="layer" backgroundColor="#0000" childLayout="center">
+            <panel id="panel" height="20%" width="20%" align="left" valign="top" backgroundColor="#f00f" childLayout="center"></panel>
+            <panel id="panel22" height="20%" width="20%" align="center" valign="center" backgroundColor="#0f0f" childLayout="center"></panel>
+            <panel id="panel33" height="20%" width="20%" align="right" valign="bottom" backgroundColor="#00ff" childLayout="center"></panel>
+
+            <text font="res/menu.fnt" color="#f00f" text="Fuck you bitch!!! ${ENV.HOME}" />
+
+
+
+        </layer>
+        <layer id="layer2" backgroundColor="#0000" childLayout="center">
+            <panel id="panel444" height="20%" width="20%" align="left" valign="bottom" backgroundColor="#f00f" childLayout="center">
+                <text font="res/menu.fnt" color="#0f0f" text="SUKA!!! ${CALL.Fuck42()}" />
+            </panel>
+        </layer>
+    </screen>
+
 </nifty>
