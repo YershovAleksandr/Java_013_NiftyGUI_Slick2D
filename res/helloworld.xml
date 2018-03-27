@@ -15,7 +15,6 @@
             <panel id="panel22" height="20%" width="20%" align="center" valign="center" backgroundColor="#0f0f" childLayout="center"></panel>
             <panel id="panel33" height="20%" width="20%" align="right" valign="bottom" backgroundColor="#00ff" childLayout="center"></panel>
 
-
             <text font="res/menu.fnt" color="#f00f" text="Fuck you bitch!!! ${ENV.HOME}" />
 
         </layer>
