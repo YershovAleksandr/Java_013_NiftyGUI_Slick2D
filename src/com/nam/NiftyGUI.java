@@ -2,6 +2,12 @@ package com.nam;
 
 import com.sun.istack.internal.NotNull;
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.builder.LayerBuilder;
+import de.lessvoid.nifty.builder.PanelBuilder;
+import de.lessvoid.nifty.builder.ScreenBuilder;
+import de.lessvoid.nifty.controls.dynamic.PanelCreator;
+import de.lessvoid.nifty.elements.Element;
+import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.slick2d.NiftyBasicGame;
 import de.lessvoid.nifty.slick2d.NiftyRenderOrder;
 import org.newdawn.slick.*;
@@ -32,19 +38,42 @@ public class NiftyGUI extends NiftyBasicGame{
 
     @Override
     protected void prepareNifty(Nifty nifty) {
-        nifty.fromXml("res/helloworld.xml", "fuckscreen");
-        //nifty.fromXmlWithoutStartScreen("res/helloworld.xml");
+        nifty.fromXml("res/helloworld42.xml", "start");
+        //nifty.fromXmlWithoutStartScreen("res/helloworld42.xml");
         //nifty.fromXml("res/screens/country_select_screen.xml", "country_select_screen");
 
-        //nifty.addXml("res/helloworld.xml");
+        //nifty.addXml("res/helloworld42.xml");
 
-       // nifty.gotoScreen("sart42");
+        nifty.gotoScreen("start");
 
-        nifty.gotoScreen("fuckscreen");
+        //nifty.gotoScreen("fuckscreen");
 
         log.info("Render order" + getRenderOrder());
 
         log.info("ver = " + nifty.getVersion());
+
+
+        Screen screen = nifty.getCurrentScreen();
+
+        Element layer = screen.findElementByName("baseLayer");
+
+        PanelCreator createPanel = new PanelCreator();
+        createPanel.setHeight("80px");
+        createPanel.setBackgroundColor("#0f0f");
+
+        Element newPanel = createPanel.create(nifty, screen, layer);
+
+        Screen screen2 = new ScreenBuilder("start"){{
+            layer(new LayerBuilder("baseLayer"){{
+                childLayoutCenter();
+                panel(new PanelBuilder(){{
+                    height("150px");
+                    backgroundColor("#00ff");
+                }});
+            }});
+        }}.build(nifty);
+
+
     }
 
     public String Fuck42(){
