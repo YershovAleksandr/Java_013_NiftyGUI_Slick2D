@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nifty xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
-    <screen id="start42" controller="com.nam.niftygui">
-        <layer id="layer" backgroundColor="#003f" childLayout="center">
-            <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f"
-                   childLayout="center" visibleToMouse="true">
-            </panel>
-        </layer>
-    </screen>
 
     <screen id="fuckscreen" controller="com.nam.niftygui">
         <layer id="layer" backgroundColor="#0000" childLayout="center">
             <panel id="panel" height="20%" width="20%" align="left" valign="top" backgroundColor="#f00f" childLayout="center"></panel>
             <panel id="panel22" height="20%" width="20%" align="center" valign="center" backgroundColor="#0f0f" childLayout="center"></panel>
             <panel id="panel33" height="20%" width="20%" align="right" valign="bottom" backgroundColor="#00ff" childLayout="center"></panel>
-            <text font="res/menu.fnt" color="#f00f" text="Fuck you bitch!!! ${ENV.HOME}" />
+            <text font="res/menu.fnt" color="#f00f" text="Fuck you bitch!!! ${ENV.PWD}" />
 
         </layer>
         <layer id="layer2" backgroundColor="#0000" childLayout="center">
@@ -23,4 +16,12 @@
             <panel id="panel444" height="20%" width="20%" align="right" valign="top" backgroundColor="#0fff" childLayout="center" />
         </layer>
     </screen>
+
+    <screen id="sart42" controller="com.nam.niftygui">
+        <layer id="layer" backgroundColor="#003f" childLayout="center">
+            <panel id="panel" height="25%" width="90%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true"></panel>
+        </layer>
+    </screen>
+
+
 </nifty>
