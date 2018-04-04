@@ -29,17 +29,17 @@ public class NiftyGUI extends NiftyBasicGame{
     }
 
     public NiftyGUI(){
-        super( "Fuck GUI", "start42");
+       // super( "Fuck GUI", "start42");
         //super( "Fuck GUI", "country_select_screen");
-        //super( "Fuck GUI");
+        super( "Fuck GUI");
         log.info("Constructor");
         setRenderOrder(NiftyRenderOrder.NiftyBackground);
     }
 
     @Override
     protected void prepareNifty(Nifty nifty) {
-        nifty.fromXml("res/helloworld42.xml", "start");
-        //nifty.fromXmlWithoutStartScreen("res/helloworld42.xml");
+        //nifty.fromXml("res/helloworld42.xml", "start");
+        nifty.fromXmlWithoutStartScreen("res/helloworld42.xml");
         //nifty.fromXml("res/screens/country_select_screen.xml", "country_select_screen");
 
         //nifty.addXml("res/helloworld42.xml");
@@ -53,7 +53,7 @@ public class NiftyGUI extends NiftyBasicGame{
         log.info("ver = " + nifty.getVersion());
 
 
-        Screen screen = nifty.getCurrentScreen();
+       /* Screen screen = nifty.getCurrentScreen();
 
         Element layer = screen.findElementByName("baseLayer");
 
@@ -72,7 +72,20 @@ public class NiftyGUI extends NiftyBasicGame{
                 }});
             }});
         }}.build(nifty);
+*/
 
+      /* Screen screen = new ScreenBuilder("start"){{
+           //
+           controller(new MyScreenController());
+           layer(new LayerBuilder("baseLayer"){{
+               childLayoutCenter();
+               panel(new PanelBuilder(){{
+                   height("150px");
+                   backgroundColor("#00ff");
+               }});
+           }});
+
+       }}.build(nifty);*/
 
     }
 
