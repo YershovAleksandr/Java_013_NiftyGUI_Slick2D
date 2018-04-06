@@ -4,6 +4,7 @@ import com.sun.istack.internal.NotNull;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.builder.LayerBuilder;
 import de.lessvoid.nifty.builder.PanelBuilder;
+import de.lessvoid.nifty.builder.PopupBuilder;
 import de.lessvoid.nifty.builder.ScreenBuilder;
 import de.lessvoid.nifty.controls.dynamic.PanelCreator;
 import de.lessvoid.nifty.elements.Element;
@@ -86,6 +87,47 @@ public class NiftyGUI extends NiftyBasicGame{
            }});
 
        }}.build(nifty);*/
+
+
+      /*new PopupBuilder("popupExit"){{
+          //childLayoutCenter();
+          //back
+      }}.registerPopup(nifty);*/
+
+
+        Element popupElement = nifty.createPopup("popupExit");
+
+        //nifty.showPopup(nifty.getCurrentScreen(), popupElement.getId(), null);
+
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run(){
+
+                //while (true){
+                    try {
+                        Thread.sleep(2000);
+                    } catch (Exception ex) {
+                        log.error("PIDOR", ex);
+                    }
+
+                nifty.showPopup(nifty.getCurrentScreen(), popupElement.getId(), null);
+
+                try {
+                    Thread.sleep(2000);
+                } catch (Exception ex) {
+                    log.error("PIDOR", ex);
+                }
+
+                nifty.closePopup(popupElement.getId());
+
+                //}
+            }
+        });
+
+        th.start();
+
+
+
 
     }
 
