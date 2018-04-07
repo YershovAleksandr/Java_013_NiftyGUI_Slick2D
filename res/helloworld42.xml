@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nifty xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
     <screen id="start" controller="com.nam.MyScreenController">
-        <layer id="layer" backgroundColor="#0000" childLayout="center">
+        <layer id="layer" backgroundColor="#0000" childLayout="vertical">
             <!--
             <panel id="panel444" height="20%" width="20%" align="center" valign="top" backgroundColor="#ff0f" childLayout="center">
                     <text font="res/menu.fnt" color="#0f0f" text="SUKA!\#ff0000#!! ${CALL.PidorClick()}" />
             </panel>
             <panel backgroundImage="res/menu.png" height="50%" width="50%" imageMode="repeat:0,0,100,100" backgroundColor="#0038"/>
             -->
+
+            <panel height="100px" width="30%" backgroundColor="#f00f" align="right"></panel>
+            <panel height="100px" width="10%" backgroundColor="#0f0f" align="center"></panel>
+            <panel height="100px" width="50%" backgroundColor="#00ff"></panel>
+
 
         </layer>
     </screen>
