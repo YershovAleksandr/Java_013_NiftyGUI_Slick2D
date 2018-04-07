@@ -94,7 +94,7 @@ public class NiftyGUI extends NiftyBasicGame{
           //back
       }}.registerPopup(nifty);*/
 
-
+/*
         Element popupElement = nifty.createPopup("popupExit");
 
         //nifty.showPopup(nifty.getCurrentScreen(), popupElement.getId(), null);
@@ -124,7 +124,7 @@ public class NiftyGUI extends NiftyBasicGame{
             }
         });
 
-        th.start();
+        th.start();*/
 
 
 
