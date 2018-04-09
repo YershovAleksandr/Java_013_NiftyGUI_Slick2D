@@ -36,4 +36,8 @@ public class MyScreenController implements ScreenController{
         return new String("GOMIK");
     }
 
+    public void click42(String a){
+        log.info("FUCK!!!!!!!!!!!!!!!!" + a);
+    }
+
 }

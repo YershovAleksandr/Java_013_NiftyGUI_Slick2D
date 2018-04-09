@@ -13,6 +13,12 @@
             <panel height="200px" width="10%" backgroundColor="#0f0f" ></panel>
             <panel height="100px" width="50%" backgroundColor="#00ff" ></panel>
 
+            <panel height="10%" width="10%" backgroundColor="#0774" valign="center" align="center" childLayout="center"></panel>
+                <image filename="res/menu.png">
+                    <interact onClick="click42(24)" />
+                </image>
+
+
 
         </layer>
     </screen>

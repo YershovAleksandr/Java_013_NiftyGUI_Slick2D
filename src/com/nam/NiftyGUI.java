@@ -128,7 +128,7 @@ public class NiftyGUI extends NiftyBasicGame{
 
         //nifty.setDebugOptionPanelColors(true);
 
-        log.info("PIDOR" + nifty.getCurrentScreen().debugOutput());
+        //log.info("PIDOR" + nifty.getCurrentScreen().debugOutput());
 
     }
 
