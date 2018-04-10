@@ -32,6 +32,7 @@ public class MyScreenController implements ScreenController{
 
     public String PidorClick(){
         //
+
         log.warn("PIDOR CLICK!!!1111");
         return new String("GOMIK");
     }
@@ -40,4 +41,7 @@ public class MyScreenController implements ScreenController{
         log.info("FUCK!!!!!!!!!!!!!!!!" + a);
     }
 
+    public void clk42(int x, int y){
+        log.info("Clk42 x = " + x + " y = " + y);
+    }
 }

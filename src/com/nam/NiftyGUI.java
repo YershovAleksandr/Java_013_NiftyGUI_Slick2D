@@ -40,12 +40,13 @@ public class NiftyGUI extends NiftyBasicGame{
     @Override
     protected void prepareNifty(Nifty nifty) {
         //nifty.fromXml("res/helloworld42.xml", "start");
-        nifty.fromXmlWithoutStartScreen("res/helloworld42.xml");
+        nifty.fromXml("res/helloworld42.xml", "start");
+        //nifty.fromXmlWithoutStartScreen("res/helloworld42.xml");
         //nifty.fromXml("res/screens/country_select_screen.xml", "country_select_screen");
 
         //nifty.addXml("res/helloworld42.xml");
 
-        nifty.gotoScreen("start");
+        //nifty.gotoScreen("start");
 
         //nifty.gotoScreen("fuckscreen");
 
