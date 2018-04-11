@@ -2,6 +2,7 @@ package com.nam;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.elements.events.NiftyMouseMovedEvent;
 import de.lessvoid.nifty.elements.events.NiftyMousePrimaryClickedEvent;
 import de.lessvoid.nifty.input.NiftyInputEvent;
 import de.lessvoid.nifty.screen.KeyInputHandler;
@@ -57,8 +58,15 @@ public class MyScreenController implements ScreenController , KeyInputHandler{
         return true;
     }
 
-    @NiftyEventSubscriber(id = "img42")
+    //@NiftyEventSubscriber(id = "img42")
+    @NiftyEventSubscriber(pattern = "im.*")
     public void onClic11k(String id, NiftyMousePrimaryClickedEvent event){
         log.info("id = " + id + " event x = [" + event.getMouseX() + "] event y = [" + event.getMouseY() + "]");
     }
+/*
+    @NiftyEventSubscriber(pattern = "im.*")
+    public void onMmove(String id, NiftyMouseMovedEvent event){
+        log.info("Moved id = " + id + " event x = [" + event.getMouseX() + "] event y = [" + event.getMouseY() + "]");
+    }*/
+
 }
