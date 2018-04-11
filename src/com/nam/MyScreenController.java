@@ -9,6 +9,7 @@ import de.lessvoid.nifty.screen.ScreenController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class MyScreenController implements ScreenController , KeyInputHandler{
 
     private static Logger log = LoggerFactory.getLogger(MyScreenController.class);
