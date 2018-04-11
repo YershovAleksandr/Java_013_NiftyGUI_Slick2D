@@ -1,13 +1,15 @@
 package com.nam;
 
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.input.NiftyInputEvent;
+import de.lessvoid.nifty.screen.KeyInputHandler;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MyScreenController implements ScreenController{
+public class MyScreenController implements ScreenController , KeyInputHandler{
 
     private static Logger log = LoggerFactory.getLogger(MyScreenController.class);
 
@@ -43,5 +45,12 @@ public class MyScreenController implements ScreenController{
 
     public void clk42(int x, int y){
         log.info("Clk42 x = " + x + " y = " + y);
+    }
+
+    public boolean keyEvent(NiftyInputEvent inputEvent){
+        //wtf
+        log.info("KeyEvent PIDOR" + inputEvent);
+
+        return true;
     }
 }
