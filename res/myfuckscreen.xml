@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
+    <screen id="start" controller="com.nam.MyScreenController">
+        <layer childLayout="center">
+            <image filename="res/sample.png" visibleToMouse="true"></image>
+            <text font="res/menu.fnt" color="#f00f" text="${ENV.SHELL}" visibleToMouse="true">
+                <effect>
+                    <onStartScreen name="fade" start="#0" end="#f" length="1500"/>
+                    <onHover name="textSize" maxSize="120%">
+                        <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
+                    </onHover>
+                </effect>
+            </text>
+        </layer>
+    </screen>
+</nifty>
