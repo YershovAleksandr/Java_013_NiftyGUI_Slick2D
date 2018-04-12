@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nifty xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
-    <screen id="start" controller="com.nam.MyScreenController">
+    <screen id="start" controller="com.nam.MyFuckScreenController">
         <layer childLayout="center">
-            <image filename="res/sample.png" visibleToMouse="true"></image>
-            <text font="res/menu.fnt" color="#f00f" text="${ENV.SHELL}" visibleToMouse="true">
+            <image id="imageId" filename="res/sample.png" visibleToMouse="true">
+            <!--<text font="res/menu.fnt" color="#f00f" text="${ENV.SHELL}" visibleToMouse="true">            </text>-->
                 <effect>
-                    <onStartScreen name="fade" start="#0" end="#f" length="1500"/>
-                    <onHover name="textSize" maxSize="120%">
+                    <!--<onStartScreen name="fade" start="#0" end="#f" length="1500"/>
+                        <onHover name="textSize" maxSize="120%">
                         <hover hoverFalloffType="linear" hoverFalloffConstraint="both" hoverWidth="200%" hoverHeight="200%" />
-                    </onHover>
+                    </onHover>-->
+                    <onCustom customKey="fadeIn" name="fade" start="#0" end="#f" />
+                    <onCustom customKey="fadeOut" name="fade" start="#f" end="#0" neverStopRendering="true" />
                 </effect>
-            </text>
+            </image>
         </layer>
     </screen>
 </nifty>
