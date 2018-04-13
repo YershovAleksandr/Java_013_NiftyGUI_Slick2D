@@ -2,6 +2,8 @@ package com.nam;
 
 import de.lessvoid.nifty.EndNotify;
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.controls.TextFieldChangedEvent;
 import de.lessvoid.nifty.effects.EffectEventId;
 import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.screen.Screen;
@@ -27,7 +29,7 @@ public class MyFuckScreenController implements ScreenController {
     @Override
     public void onStartScreen(){
         log.info("onStart Screen");
-        image.startEffect(EffectEventId.onCustom, new FadeInEnd(), "fadeIn");
+//        image.startEffect(EffectEventId.onCustom, new FadeInEnd(), "fadeIn");
     }
 
     @Override
@@ -35,11 +37,11 @@ public class MyFuckScreenController implements ScreenController {
         log.info("onEnd Screen");
     }
 
-    class FadeInEnd implements EndNotify{
+   /* class FadeInEnd implements EndNotify{
         @Override
         public void perform(){
             log.info("FadeInd has ended");
-            image.startEffect(EffectEventId.onCustom, new FadeOutEnd(), "fadeOut");
+  //          image.startEffect(EffectEventId.onCustom, new FadeOutEnd(), "fadeOut");
         }
     }
 
@@ -48,6 +50,11 @@ public class MyFuckScreenController implements ScreenController {
         public void perform(){
             log.info("FadeOut has ended");
         }
+    }*/
+
+    @NiftyEventSubscriber(id="input")
+    public void onTextwtf(final String id, final TextFieldChangedEvent event){
+        log.info("HI " + event.getText());
     }
 
 
